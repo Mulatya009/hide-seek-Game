@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hide | Seek</title>
+    <!--bootsrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/main.css">
+ 
+</head>
+<body class="bg-light">
+    <div class="">
+        <!-- header -->
+        <header class="text-center text-white bg-dark p-1 mb-5">
+            <h5>hide & seek</h5>
+        </header>
+        <div class="container">
+            <div class="row w-25 bg-dark justify-content-center" id="mess">
+                <span class="text-white" id="message-results">Unlock your car</span>
+            </div>
+        </div>
+
+        <!-- input choices -->
+        <div class="jumbotron mt-4 py-3">
+            <div class="d-flex " id="choices">    
+              <div id="choice-one">
+                
+              </div>  
+
+              <div id="choice-two">
+
+              </div>
+
+              <div id="choice-three">
+
+              </div>
+
+              <div id="choice-four">
+
+              </div>
+            </div> 
+        </div>
+    </div>
+
+    <!-- reset -->
+    <div class="mt-3 w-50" id="reset-results">
+        <button class="btn btn-block btn-dark" id="re-try">Press to try again</button>
+    </div>
+
+    <!-- results -->
+    <div class="row d-flex justify-content-center mt-3" id="general-results">
+        <table class="table-bordered table-hover">
+            <tr>
+                <th class="px-3 py-1 text-center">Trials</th>
+                <th class="px-3 py-1 text-center">Wins</th>
+                <th class="px-3 py-1 text-center">Fails</th>
+            </tr>
+            <tr>
+                <td class="px-3 py-1 text-center"><span id="trials"></span></td>
+                <td class="px-3 py-1 text-center"><span id="wins"></span></td>
+                <td class="px-3 py-1 text-center"><span id="fails"></span></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!--js-->
+    <script src="js/app.js"></script>
+    
+    
+</body>
+</html>

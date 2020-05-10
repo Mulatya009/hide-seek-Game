@@ -1,0 +1,34 @@
+.link{
+    color: #fff;
+}
+.link:hover{
+    text-decoration: none;
+    color: rgba(red, green, blue, .2);
+    transition: 2s;
+}
+body{
+    overflow: hidden;
+}
+.jumbotron{
+    margin: 0 auto;
+    max-width: 1300px;
+}
+#choices div{
+    flex: 1;
+    margin: 5px;
+    height: 220px;
+    width: 320px;
+    border: solid black 1px;
+    padding: 10px;
+}
+#choices div img{
+    height: 200px;
+    width: 300px; 
+}
+
+.container #mess{
+    margin: 0 auto;
+}
+#reset-results{
+    margin: 0 auto;
+}
