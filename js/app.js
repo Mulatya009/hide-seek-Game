@@ -11,6 +11,10 @@ const hideSeek = {
 // Global Constants
 const CHOICES = hideSeek['choices'];
 
+// game sounds
+const gameOverSound = new Audio('sounds/game over.wav')
+const gameOnSound = new Audio('sounds/piano.mp3')
+
 const choices = document.querySelector('#choices');
 let choiceOne = document.querySelector('#choice-one');
 let choiceTwo = document.querySelector('#choice-two');
@@ -35,6 +39,7 @@ function bringChoices(){
 
 function myChoice(e){
     if(hideSeek['tryOver'] === false){
+        gameOnSound.play();
         let playerSelect = playerChoice(e);
         let choiceDiv = randomDiv();
         let message = computeResults(playerSelect, choiceDiv);
@@ -210,11 +215,9 @@ function generalResults(){
 }
 
 function gameOver(){
-
     if (hideSeek['trials'] <= 4){
         displayGameOverResults();
-    }
-     
+    }     
 }
 
 function displayGameOverResults(){
@@ -227,10 +230,11 @@ function displayGameOverResults(){
         
     }
     else if (hideSeek['wins'] === 1){
-        message = 'You unlocked this beautiful car' + ' ' + hideSeek['trials'] + ' ' + 'trial(s)';
+        message = 'CONGRATS, You unlocked this beautiful car' + ' ' + hideSeek['trials'] + ' ' + 'trial(s)';
         messageColor = 'text-success';
-        btnText = 'Congratulations Winner... Play again?';
-        console.log(message)
+        btnText = 'Play again?';
+        gameOnSound.pause();
+        gameOverSound.play();
 
         wrapper.innerHTML = `
             <div id="cover-wrapper" class="text-center pt-4" style="background-color: rgba(230, 230, 230, .94158989);">
@@ -240,11 +244,14 @@ function displayGameOverResults(){
                 <button class="btn btn-block btn-info" onClick="playAgain()">${btnText}</button>
             </div>
         `;
+        
     }
     if (hideSeek['trials'] === 3 && hideSeek['wins'] === 0){
-        message = 'Sorry, Your trials are out!';
+        message = 'SORRY, Your trials are out!';
         messageColor = 'text-danger';
         btnText = 'Hey! ... Try again?';
+        gameOnSound.pause();
+        gameOverSound.play();
 
         wrapper.innerHTML = `
             <div id="cover-wrapper" class="text-center pt-5" style="background-color: rgba(230, 230, 230, .94158989);">
