@@ -6,6 +6,7 @@ const hideSeek = {
     "car": '',
     "wins": 0,
     "tryOver": false,
+    "trialStrings": ['none','first', 'second', 'third', 'fourth'],
 }
 
 // Global Constants
@@ -229,8 +230,9 @@ function displayGameOverResults(){
         console.log('continue')
         
     }
+
     else if (hideSeek['wins'] === 1){
-        message = 'CONGRATS, You unlocked this beautiful car' + ' ' + hideSeek['trials'] + ' ' + 'trial(s)';
+        message = 'CONGRATS, You unlocked this beautiful car'  + ' ' + 'in your'  + ' ' + hideSeek['trialStrings'][hideSeek['trials']] + ' ' + 'trial.';
         messageColor = 'text-success';
         btnText = 'Play again?';
         gameOnSound.pause();
@@ -243,9 +245,9 @@ function displayGameOverResults(){
                 <img style="height: 250px; width: 400px;" src="photo/${hideSeek['car']}.jpg"><br>
                 <button class="btn btn-block btn-info" onClick="playAgain()">${btnText}</button>
             </div>
-        `;
-        
+        `;    
     }
+
     if (hideSeek['trials'] === 3 && hideSeek['wins'] === 0){
         message = 'SORRY, Your trials are out!';
         messageColor = 'text-danger';
@@ -259,6 +261,7 @@ function displayGameOverResults(){
                 <h4 class="${messageColor}">${message}</h4><br>
                 <button class="btn btn-block btn-info" onClick="playAgain()">${btnText}</button>
             </div>
+            
         `;
     }
 
