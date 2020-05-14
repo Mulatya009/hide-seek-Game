@@ -3,10 +3,10 @@ const hideSeek = {
     "div": ['divOne', 'divTwo', 'divThree', 'divFour'],
     "cars": ['car1', 'car2', 'car3', 'car4', 'car5', 'car6', 'car7', 'car8', 'car9', 'car10', 'car11', 'car12', 'car13', 'car14', 'car15', 'car16', 'car17', 'car18', 'car19', 'car20'],
     "trials": 0,
+    "car": '',
     "wins": 0,
     "tryOver": false,
 }
-
 
 // Global Constants
 const CHOICES = hideSeek['choices'];
@@ -16,7 +16,6 @@ let choiceOne = document.querySelector('#choice-one');
 let choiceTwo = document.querySelector('#choice-two');
 let choiceThree = document.querySelector('#choice-three');
 let choiceFour = document.querySelector('#choice-four');
-
 
 // Event Listeners
 eventListeners()
@@ -28,12 +27,10 @@ function eventListeners(){
 
 // Functions
 function bringChoices(){
-   
     choiceOne.classList = ('one', 'bg-dark');
     choiceTwo.classList = ('two', 'bg-dark');
     choiceThree.classList = ('three', 'bg-dark');
     choiceFour.classList = ('four', 'bg-dark');   
-
 }
 
 function myChoice(e){
@@ -57,6 +54,7 @@ function randomCar(){
 }
 
 function showResults(choiceDiv, car, message){
+    hideSeek['car'] = car;
     let ansDiv = determineDiv(choiceDiv);
     
     let carImg = document.createElement('img');
@@ -82,6 +80,7 @@ function showResults(choiceDiv, car, message){
     generalResults();
 
     hideSeek['tryOver'] = true;
+
 }
 
 function determineDiv(choiceDiv){
@@ -181,7 +180,7 @@ function computeResults(playerSelect, choiceDiv){
 
     return message;
         
-}
+} 
 
 function reTry(){ 
     hideSeek['tryOver'] = false;
@@ -206,4 +205,58 @@ function generalResults(){
     document.querySelector('#trials').textContent = hideSeek['trials'];
     document.querySelector('#wins').textContent = hideSeek['wins'];
     document.querySelector('#fails').textContent = hideSeek['trials'] - hideSeek['wins'];
+
+    gameOver();
+}
+
+function gameOver(){
+
+    if (hideSeek['trials'] <= 4){
+        displayGameOverResults();
+    }
+     
+}
+
+function displayGameOverResults(){
+    const wrapper = document.querySelector('#cover');
+    const header = 'GAME OVER';
+    let message, messageColor, btnText;    
+
+    if(hideSeek['wins'] === 0) {
+        console.log('continue')
+        
+    }
+    else if (hideSeek['wins'] === 1){
+        message = 'You unlocked this beautiful car' + ' ' + hideSeek['trials'] + ' ' + 'trial(s)';
+        messageColor = 'text-success';
+        btnText = 'Congratulations Winner... Play again?';
+        console.log(message)
+
+        wrapper.innerHTML = `
+            <div id="cover-wrapper" class="text-center pt-4" style="background-color: rgba(230, 230, 230, .94158989);">
+                <h1>${header}</h1><br>
+                <h4 class="${messageColor}">${message}</h4><br>
+                <img style="height: 250px; width: 400px;" src="photo/${hideSeek['car']}.jpg"><br>
+                <button class="btn btn-block btn-info" onClick="playAgain()">${btnText}</button>
+            </div>
+        `;
+    }
+    if (hideSeek['trials'] === 3 && hideSeek['wins'] === 0){
+        message = 'Sorry, Your trials are out!';
+        messageColor = 'text-danger';
+        btnText = 'Hey! ... Try again?';
+
+        wrapper.innerHTML = `
+            <div id="cover-wrapper" class="text-center pt-5" style="background-color: rgba(230, 230, 230, .94158989);">
+                <h1>${header}</h1><br>
+                <h4 class="${messageColor}">${message}</h4><br>
+                <button class="btn btn-block btn-info" onClick="playAgain()">${btnText}</button>
+            </div>
+        `;
+    }
+
+}
+
+function playAgain(){
+    window.location.reload();
 }

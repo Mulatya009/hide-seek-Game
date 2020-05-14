@@ -32,3 +32,14 @@ body{
 #reset-results{
     margin: 0 auto;
 }
+#cover-wrapper{
+    height: 600px;
+    width: 100%;
+    position: relative;
+    margin-top: -488px;
+}
+#cover-wrapper button{
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 15px;
+}

@@ -1,0 +1,8 @@
+{
+    "editor.fontSize": 16,
+    "files.autoSave": "afterDelay",
+    "workbench.colorTheme": "Night Owl",
+    "workbench.iconTheme": "file-icons",
+    "workbench.preferredDarkColorTheme": "Night Owl",
+    "autoDarkMode.lightTheme": "Default Dark+"
+}
