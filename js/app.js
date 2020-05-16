@@ -13,8 +13,8 @@ const hideSeek = {
 const CHOICES = hideSeek['choices'];
 
 // game sounds
-const gameOverSound = new Audio('sounds/game over.wav')
-const gameOnSound = new Audio('sounds/piano.mp3')
+const gameOverSound = new Audio('sounds/game over.wav');
+const gameOnSound = new Audio('sounds/piano.mp3'); 
 
 const choices = document.querySelector('#choices');
 let choiceOne = document.querySelector('#choice-one');
